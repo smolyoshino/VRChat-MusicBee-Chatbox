@@ -6,9 +6,9 @@ import psutil
 import ctypes
 import time
 
-spotifyName = ""
+mbName = ""
 a = ["", True]
-b = [f"{spotifyName}", True]
+b = [f"{mbName}", True]
 ip = "127.0.0.1"
 port = 9000
 client = SimpleUDPClient(ip, port)
@@ -18,14 +18,14 @@ GetWindowText = ctypes.windll.user32.GetWindowTextW
 GetWindowTextLength = ctypes.windll.user32.GetWindowTextLengthW
 IsWindowVisible = ctypes.windll.user32.IsWindowVisible
 def getProcessIDByName():
-    spotify_pids = []
-    process_name = "Spotify.exe"
+    mb_pids = []
+    process_name = "MusicBee.exe"
 
     for proc in psutil.process_iter():
         if process_name in proc.name():
-            spotify_pids.append(proc.pid)
+            mb_pids.append(proc.pid)
 
-    return spotify_pids
+    return mb_pids
 
 def get_hwnds_for_pid(pid):
     def callback(hwnd, hwnds):
@@ -45,7 +45,7 @@ def getWindowTitleByHandle(hwnd):
     GetWindowText(hwnd, buff, length + 1)
     return buff.value
 
-def getspotifyHandle():
+def getmbHandle():
     pids = getProcessIDByName()
 
     for i in pids:
@@ -55,19 +55,25 @@ def getspotifyHandle():
                 return hwnd
 
 
-spotify_handle = getspotifyHandle()
+mb_handle = getmbHandle()
 
 while(True):
-    if(getWindowTitleByHandle(spotify_handle) == "Spotify Free" or getWindowTitleByHandle(spotify_handle) == "Spotify Premium"):
+    if(getWindowTitleByHandle(mb_handle) == "MusicBee"):
         client.send_message("/chatbox/input", a)
+        print(a)
         print('play music')
     else:
-        if(getWindowTitleByHandle(spotify_handle) != spotifyName):
-            spotifyName = getWindowTitleByHandle(spotify_handle)
-            b[0] = f"{spotifyName}"
+        if(getWindowTitleByHandle(mb_handle) != mbName):
+            mbName = "Playing: "
+            mbName += getWindowTitleByHandle(mb_handle)
+            b[0] = f"{mbName}"
+            size = len(mbName)
+            b[0] = mbName[:size - 11]
             client.send_message("/chatbox/input", b)
             print("sent!")
+            # print(b[0])
         else:
             client.send_message("/chatbox/input", b)
             print("we already had it but sending it again :D")
-    time.sleep(2)
+            # print(b[0])
+    time.sleep(5)
