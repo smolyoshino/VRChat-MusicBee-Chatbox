@@ -1,4 +1,11 @@
-# VRChat-Spotify-Chatbox
+# VRChat-Musicbee-Chatbox
+
+Forked from [this project](https://github.com/o0F-0oF/VRChat-Spotify-Chatbox), I wanted to modify it to show what I'm currently listening to on MusicBee.
+
+---
+Original README:
+---
+
 half this is not mine :D, but this works:tm:
 (credits to stackoverflow <3)
 
