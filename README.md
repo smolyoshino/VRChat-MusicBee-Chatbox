@@ -2,6 +2,8 @@
 
 Forked from [this project](https://github.com/o0F-0oF/VRChat-Spotify-Chatbox), I wanted to modify it to show what I'm currently listening to on MusicBee.
 
+![Yippieee](https://raw.githubusercontent.com/smolyoshino/VRChat-MusicBee-Chatbox/main/vrcmb.png)
+
 ---
 Original README:
 ---
