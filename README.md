@@ -4,6 +4,8 @@ Forked from [this project](https://github.com/o0F-0oF/VRChat-Spotify-Chatbox), I
 
 ![Yippieee](https://raw.githubusercontent.com/smolyoshino/VRChat-MusicBee-Chatbox/main/vrcmb.png)
 
+## I plan on making this more user-configurable by giving it a GUI, and allowing for more things to be sent to the chatbox, as well as some other QOL fixes.
+
 ---
 Original README:
 ---
